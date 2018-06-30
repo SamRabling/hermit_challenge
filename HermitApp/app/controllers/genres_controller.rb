@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-    before_action :set_user, only: [:show, :update]
+    before_action :require_user, only: [:show, :update]
 
     def index
         @genres = Genre.all
@@ -27,7 +27,7 @@ class GenresController < ApplicationController
         params.permit(:name, :description)
     end
 
-    def set_user
+    def require_user
         @user = User.find(params[:id])
     end
 end
