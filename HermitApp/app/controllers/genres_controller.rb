@@ -3,12 +3,13 @@ class GenresController < ApplicationController
 
     def index
         @genres = Genre.all
-        json_response(@genres)
+        render json: @genres, status: :ok
     end
 
     def create 
-        @genres = Genre.create!(genre_params)
-        json_response(@genres, :create)
+        @genres = Genre.create(genre_params)
+        @genres.save
+        render json: @genres, status: :created
     end
 
     def clicked

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180630194747) do
+ActiveRecord::Schema.define(version: 20180701210329) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 20180630194747) do
     t.string   "name"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "auhtentication_token", limit: 30
+    t.index ["auhtentication_token"], name: "index_users_on_auhtentication_token", unique: true
   end
 
 end
